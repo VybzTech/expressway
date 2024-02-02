@@ -1,13 +1,16 @@
 //  SETUP ROUTES HERE
 const express = require("express");
 const router = express.Router();
-
+// router.get("/", (req, res) => {
+//   console.log(req);
+//   res.send("This is Home Page API");
+// });
 router.post("/contact", (req, res) => {
-  const { name, message } = req.body;
-
+  const { user, msg } = req.body;
   console.log(
-    `This is your name ${name}, and you wish to relay this message: "${message}".`
+    `This is your name ${user}, and you wish to relay this message: "${msg}".`
   );
+  res.send("Message sent successfully");
 });
 router.get("/users", (req, res) => {
   //  PULL USER DATA HERE
