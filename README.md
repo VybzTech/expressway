@@ -22,7 +22,12 @@ The app will be available at http://localhost:3000.
 - app.js: Entry point of the application.
 - routes/: Directory for route handling.
 - views/: Directory for storing views or templates.
--public/: Directory for static assets like stylesheets and images.
+- public/: Directory for static assets like stylesheets and images.
+
+  ```bash
+  cd first-express-app
+  npm install
+  npm start
 
 Dependencies
 -
@@ -32,8 +37,8 @@ Contributing
 -
 If you'd like to contribute or report issues, please follow these guidelines:
 
-Fork the repository.
--
+### Fork the repository.
+
 Create a new branch: git checkout -b feature/new-feature.
 Make your changes and commit them: git commit -m 'Add new feature'.
 Push to the branch: git push origin feature/new-feature.
@@ -42,4 +47,4 @@ Submit a pull request.
 ## License
 This project is licensed under the MIT License.
 
-Feel free to customize this template based on the specifics of your Express.js app. Include additional sections, such as features, usage examples, or deployment instructions, depending on the complexity of your application.
+###### Feel free to customize this template based on the specifics of your Express.js app. Include additional sections, such as features, usage examples, or deployment instructions, depending on the complexity of your application.
