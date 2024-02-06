@@ -5,6 +5,8 @@ const router = express.Router();
 //   console.log(req);
 //   res.send("This is Home Page API");
 // });
+
+// SENDING POST REQUEST FROM CONTACT FORM URL
 router.post("/contact", (req, res) => {
   const { user, msg } = req.body;
   console.log(
@@ -12,6 +14,8 @@ router.post("/contact", (req, res) => {
   );
   res.send("Message sent successfully");
 });
+
+//  GETTING A LIST OF USER FROM AN API
 router.get("/users", (req, res) => {
   //  PULL USER DATA HERE
   const userData = [
@@ -132,6 +136,42 @@ router.get("/users", (req, res) => {
     },
   ];
   res.send(userData);
+});
+
+/*  SENDING A POST REQUEST FROM OUR LOGIN  API
+router.post("/api/login", showCookies, async (req, res) => {
+  const { identifier, password } = req.body;
+  console.log(identifier, password);
+  const login_res = await axios({
+    method: "POST",
+    url: "authUrl",
+    data: { identifier, password },
+  });
+  req.jwt = login_res.data.jwt;
+  req.session.jwt = login_res.data.jwt;
+  console.log("POST Api  api/login/");
+  res.send(login_res.data);
+});
+
+//  GETTTING CLIENT SECRET FROM THE API
+router.post("/api/secret", requiresAuth, async (req, res) => {
+  const token = req.session.jwt;
+  const secret_res = await axios({
+    method: "GET",
+    url: "authurl",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  res.send(secret_res.data);
+});
+
+*/
+
+// HANDLES ANY REQUEST THAT DOESN'T MATCH THE ONES ABOVE
+router.get("*", (req, res) => {
+  console.log('No matching API'+req?.body, req)
+  res.sendFile(path.join(__dirname + "client/build/index.html"));
 });
 
 module.exports = router;
