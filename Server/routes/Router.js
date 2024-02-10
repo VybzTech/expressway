@@ -1,10 +1,20 @@
 //  SETUP ROUTES HERE
 const express = require("express");
+const DBconnection = require("..");
 const router = express.Router();
-// router.get("/", (req, res) => {
-//   console.log(req);
-//   res.send("This is Home Page API");
-// });
+
+router.get("/", (req, res) => {
+  // let sqlQuery = "SELECT * FROM LogIn";
+  // DBconnection.query(sqlQuery, (e) => {
+  //   if (e) {
+  //     throw e;
+  //   }
+  //   res.send("Database selected... ");
+  // });
+  console.log(req.params);
+  // res.json({message:"ok"})
+  res.send("This is Home Page API");
+});
 
 // SENDING POST REQUEST FROM CONTACT FORM URL
 router.post("/contact", (req, res) => {
@@ -88,52 +98,52 @@ router.get("/users", (req, res) => {
         bs: "e-enable strategic applications",
       },
     },
-    {
-      id: 4,
-      name: "Patricia Lebsack",
-      username: "Karianne",
-      email: "Julianne.OConner@kory.org",
-      address: {
-        street: "Hoeger Mall",
-        suite: "Apt. 692",
-        city: "South Elvis",
-        zipcode: "53919-4257",
-        geo: {
-          lat: "29.4572",
-          lng: "-164.2990",
-        },
-      },
-      phone: "493-170-9623 x156",
-      website: "kale.biz",
-      company: {
-        name: "Robel-Corkery",
-        catchPhrase: "Multi-tiered zero tolerance productivity",
-        bs: "transition cutting-edge web services",
-      },
-    },
-    {
-      id: 5,
-      name: "Chelsey Dietrich",
-      username: "Kamren",
-      email: "Lucio_Hettinger@annie.ca",
-      address: {
-        street: "Skiles Walks",
-        suite: "Suite 351",
-        city: "Roscoeview",
-        zipcode: "33263",
-        geo: {
-          lat: "-31.8129",
-          lng: "62.5342",
-        },
-      },
-      phone: "(254)954-1289",
-      website: "demarco.info",
-      company: {
-        name: "Keebler LLC",
-        catchPhrase: "User-centric fault-tolerant solution",
-        bs: "revolutionize end-to-end systems",
-      },
-    },
+    // {
+    //   id: 4,
+    //   name: "Patricia Lebsack",
+    //   username: "Karianne",
+    //   email: "Julianne.OConner@kory.org",
+    //   address: {
+    //     street: "Hoeger Mall",
+    //     suite: "Apt. 692",
+    //     city: "South Elvis",
+    //     zipcode: "53919-4257",
+    //     geo: {
+    //       lat: "29.4572",
+    //       lng: "-164.2990",
+    //     },
+    //   },
+    //   phone: "493-170-9623 x156",
+    //   website: "kale.biz",
+    //   company: {
+    //     name: "Robel-Corkery",
+    //     catchPhrase: "Multi-tiered zero tolerance productivity",
+    //     bs: "transition cutting-edge web services",
+    //   },
+    // },
+    // {
+    //   id: 5,
+    //   name: "Chelsey Dietrich",
+    //   username: "Kamren",
+    //   email: "Lucio_Hettinger@annie.ca",
+    //   address: {
+    //     street: "Skiles Walks",
+    //     suite: "Suite 351",
+    //     city: "Roscoeview",
+    //     zipcode: "33263",
+    //     geo: {
+    //       lat: "-31.8129",
+    //       lng: "62.5342",
+    //     },
+    //   },
+    //   phone: "(254)954-1289",
+    //   website: "demarco.info",
+    //   company: {
+    //     name: "Keebler LLC",
+    //     catchPhrase: "User-centric fault-tolerant solution",
+    //     bs: "revolutionize end-to-end systems",
+    //   },
+    // },
   ];
   res.send(userData);
 });
@@ -170,7 +180,7 @@ router.post("/api/secret", requiresAuth, async (req, res) => {
 
 // HANDLES ANY REQUEST THAT DOESN'T MATCH THE ONES ABOVE
 router.get("*", (req, res) => {
-  console.log('No matching API'+req?.body, req)
+  console.log("No matching API" + req?.body, req);
   res.sendFile(path.join(__dirname + "client/build/index.html"));
 });
 
