@@ -1,19 +1,43 @@
 //  SETUP ROUTES HERE
 const express = require("express");
-const DBconnection = require("..");
+const DB = require("../connect");
+
 const router = express.Router();
 
 router.get("/", (req, res) => {
+  const SQLGet = "SELECT * FROM LogIn";
+
+  // const mysql = require("mysql");
+
+  // const dbConfig = {
+  //     host: process.env.DB_HOST,
+  //     user: process.env.DB_USER,
+  //     password: process.env.DB_PASSWORD,
+  //     database: process.env.DB_NAME,
+  //     port: process.env.DB_PORT,
+  // server: process.env.DB_SERVER,
+  // connectTimeout: 60000,
+  // options: {
+  //   encrypt: true, // For Azure SQL Database Server connections
+  //   trustServerCertificate: true,
+  // },
+  // };
   // let sqlQuery = "SELECT * FROM LogIn";
-  // DBconnection.query(sqlQuery, (e) => {
-  //   if (e) {
-  //     throw e;
-  //   }
+  // const Values = [];
+  // DB.query(SQLGet, [], (e, data) => {
+  //   if (e) return res.status(500).send(e);
+  //   // if (data.length) return res.status(409).json("User already exists");
+
+  //   // });
+  //   // DBconnection.query(sqlQuery, (e) => {
+  //   //   if (e) {
+  //   //     throw e;
+  //   //   }
   //   res.send("Database selected... ");
   // });
-  console.log(req.params);
+  console.log("reqBody", req);
   // res.json({message:"ok"})
-  res.send("This is Home Page API");
+  res.send({ message: "This is Home Page API" });
 });
 
 // SENDING POST REQUEST FROM CONTACT FORM URL
